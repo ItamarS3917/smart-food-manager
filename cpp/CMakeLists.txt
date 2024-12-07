@@ -12,11 +12,12 @@ option(BUILD_PYTHON_BINDINGS "Build Python bindings" ON)
 
 # Find required packages
 find_package(Threads REQUIRED)
+find_package(nlohmann_json 3.2.0 REQUIRED)
 if(BUILD_PYTHON_BINDINGS)
     find_package(pybind11 REQUIRED)
 endif()
 
-# Set source files
+# Source and header files
 set(SOURCES
     src/core/meal.cpp
     src/core/recipe.cpp
@@ -24,7 +25,6 @@ set(SOURCES
     src/core/storage.cpp
 )
 
-# Set header files
 set(HEADERS
     include/smart_food/core/meal.hpp
     include/smart_food/core/recipe.hpp
@@ -34,6 +34,8 @@ set(HEADERS
 
 # Create library
 add_library(smart_food SHARED ${SOURCES} ${HEADERS})
+
+# Include directories
 target_include_directories(smart_food
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -43,7 +45,11 @@ target_include_directories(smart_food
 )
 
 # Link dependencies
-target_link_libraries(smart_food PRIVATE Threads::Threads)
+target_link_libraries(smart_food
+    PRIVATE
+        Threads::Threads
+        nlohmann_json::nlohmann_json
+)
 
 # Compiler warnings
 if(MSVC)
