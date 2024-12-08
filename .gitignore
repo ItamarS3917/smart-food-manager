@@ -1,0 +1,70 @@
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# IDE files
+.vscode/
+.idea/
+**pycache**/
+*.pyc
+
+# Dependencies
+venv/
+node_modules/
+
+# Database
+*.db
+*.sqlite3
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+.DS_Store
+**/.DS_Store
+
+# ML specific additions
+## Model files
+backend/data/ml/models/*
+!backend/data/ml/models/.gitkeep
+*.pt
+*.pth
+*.onnx
+*.pb
+*.h5
+*.hdf5
+*.pkl
+*.joblib
+
+## ML training and data
+backend/data/ml/database/*
+!backend/data/ml/database/.gitkeep
+backend/data/ml/training/*
+!backend/data/ml/training/.gitkeep
+
+## ML logs and checkpoints
+logs/
+runs/
+checkpoints/
+wandb/
+tensorboard/
+*.log
+
+## Jupyter Notebooks
+.ipynb_checkpoints
+*.ipynb
+
+## Cache directories
+.cache/
+__pycache__/
+*.py[cod]
+*$py.class
+
+## ML environment
+*.env
+.python-version
+.conda/.DS_Store
+.DS_Store?
